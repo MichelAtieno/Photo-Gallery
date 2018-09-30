@@ -59,6 +59,46 @@
                         </div>
                     </div>
             </section>
+
+            {% for one_image in images %}
+                <div class="modal fade bd-example-modal-lg" id="{{one_image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12 modal-image">
+                                        <a href="/image/{{one_image.category.category}}/{{one_image.id}}">
+                                            <img src="{{one_image.image.url}}" alt="{{one_image.name}}" style="height:400px; width:500px;">
+                                        </a>
+                                    </div>
+                                    <div class="col-md-12 modal-text">
+                                        <h5 class="modal-title" id="modal-title"> {{one_image.name}} </h5>
+                                        <hr>
+                                        <p>{{one_image.description}}</p>
+                                        <p style="font-weight:bolder">Category: <span class="font-weight-bold">{{one_image.category}}</span></p>
+                                        <p>Location: {{one_image.location}}</p>
+                                        <button type="button" class="btn btn-primary" value="{{one_image.image.url}}" onclick="imagelink(this.value)">Copy Image Link</button>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+
+            <script>
+                function imagelink(value) {
+                    function handler(event) {
+                        event.clipboardData.setData('text/plain', value);
+                        event.preventDefault();
+                        document.removeEventListener('copy',handler,true);
+                    }
+                    document.addEventListener('copy',handler,true);
+                    document.execCommand('copy');
+                }
+            </script>
+{% endfor %}
                
                     
 
