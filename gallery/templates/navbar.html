@@ -20,11 +20,13 @@
               LOCATION
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href=""></a>
+              {%for location in image_locations%}
+              <a class="dropdown-item" href="/location/{{location.id}}">{{location.pic_location}}</a>
+              {% endfor %} 
           </li>
     
         </ul>
-        <form class="form-inline" role="search" action="">
+        <form class="form-inline" role="search" action="{% url 'search_images' %}">
             <input class="form-control search-input" name="category" type="search" placeholder="SEARCH CATEGORY" aria-label="Search">
         </form>
       </div>
