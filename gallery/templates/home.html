@@ -1,4 +1,66 @@
-{% extends 'base.html'%}
-{% block content%}
- <h1 class="text-center">HEY</h1>
-{% endblock%}
+{% extends 'base.html' %}
+
+{% block content %}
+{{block.super}}
+            <head>
+                <style>
+                    body {
+                        background-color: wheat;
+                    }
+                    .imageBox {
+                        overflow: hidden;
+                        box-sizing: border-box;
+                        border: 5px solid;
+                        padding:0;
+                    }
+                    .imageBox h3 {
+                        cursor: pointer;
+                        font-weight:bolder;
+                        font-size:25px;
+                        font-style: italic;
+                        position:absolute;
+                        margin:0;
+                        padding:0;
+                        top:-24px;
+                        transform: translateY(-50%);
+                        width:100%;
+                        transition:.5s;
+                        text-align: center;
+                    }
+                    .imageBox:hover h3 {
+                        top: 50%;
+                    }
+                </style>
+            </head>
+
+            <body>
+            <section style="margin-top:-20px;">
+                    <div class="container-fluid">
+                        <div class="container">
+                        <div class="row">
+                            {% for one_image in images %}
+                            <div class="col-md-4 imageBox" style="margin-top:20px;">
+                                <h3>
+                                    <a data-toggle="modal" data-target="#{{one_image.id}}" style="color:midnightblue; text-align:center;">{{one_image.name}}</a>
+                                </h3>
+                                <img src="{{one_image.image.url}}" alt="{{one_image.name}}" style="height:400px; width:500px;" class="img-responsive">
+                            </div>
+                            {% empty %}
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>Images are coming up soon</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            
+                        </div>
+                        </div>
+                    </div>
+            </section>
+               
+                    
+
+                
+{% endblock %}
