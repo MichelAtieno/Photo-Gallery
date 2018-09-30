@@ -17,6 +17,9 @@
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
 }
+  #location-list:hover {
+    background-color: black;
+  }
   </style>
 </head>
 <body>
@@ -28,17 +31,17 @@
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
+        <ul class="navbar-nav mr-auto" >
+          <li class="nav-item dropdown"  id="location-list">
               
-            <a class="nav-link dropdown-toggle navbar-brand text-center" href="{% url 'home' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:antiquewhite; font-weight:bolder;font-size:25px; color:teal; text-decoration:underline; border-radius:4px; font-family:'Segoe UI';">
+            <a class="nav-link dropdown-toggle navbar-brand text-center" href="{% url 'home' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:antiquewhite; font-weight:bolder;font-size:25px; color:teal; text-decoration:underline; border-radius:4px; font-family:'Segoe UI'; margin-left:25px;">
               LOCATION<i class="arrow down"></i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:lightsteelblue; border-radius:4px; margin-left:-15px; background-color:antiquewhite;">
+            <div class="dropdown-menu"  aria-labelledby="navbarDropdown" style="background-color:lightsteelblue; border-radius:4px; margin-left:25px; background-color:antiquewhite;">
               {%for location in image_locations%}
-              <ul style="padding:0; margin-bottom:2px; margin-left:4px; ">
+              <ul id="location-list" style="padding:0; margin-bottom:2px; margin-left:4px; ">
                 <li>
-                  <a class="dropdown-item" href="/location/{{location.id}}" style="font-size:23px; color:teal; text-transform:capitalize; font-family:'Segoe UI'; margin-bottom:3px;">{{location.pic_location}}</a>
+                  <a class="dropdown-item"  href="/location/{{location.id}}" style="font-size:23px; color:teal; text-transform:capitalize; font-family:'Segoe UI'; margin-bottom:5px;">{{location.pic_location}}</a>
                 </li>
               </ul>
               {% endfor %}
