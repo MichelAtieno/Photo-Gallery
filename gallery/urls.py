@@ -5,6 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url('^$', views.home, name='home'),
+    url(r'^image/(?P<cat_name>\w+)/(?P<image_id>\d+)',views.single_image, name='image_gallery'),
+    
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
