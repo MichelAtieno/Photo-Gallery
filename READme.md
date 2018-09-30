@@ -1,7 +1,7 @@
 # Project Personal Blog
 # By Michel Atieno, created on 29th September 2018.
 
-## Description
+### Description
  As a user of the application, you are able to:
 <ul>
     <li>View different photos that interest me.</li>
@@ -11,7 +11,7 @@
     <li>View photos based on the location they were taken.</li>
 <ul>
 
-## Behaviors
+### Behaviors
 
 <ol>
     <li>The project has an admin dashboard that is used to post photos to the database and manage the photos.</li>
@@ -20,9 +20,6 @@
 </ol>
 
 # You can view project on https://myphotos23.herokuapp.com/
-
-
-
 
 
 ## Set-up and Installation
