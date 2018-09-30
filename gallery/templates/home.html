@@ -125,7 +125,7 @@
             <script>
                 function imagelink(value) {
                     function handler(event) {
-                        event.clipboardData.setData('text/plain', value);
+                        event.clipboardData.setData('text/plain','https://myphotos23.herokuapp.com' + value);
                         event.preventDefault();
                         document.removeEventListener('copy',handler,true);
                     }
