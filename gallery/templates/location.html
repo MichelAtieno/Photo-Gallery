@@ -5,17 +5,21 @@
             <head>
                 <style>
                     body {
-                        background-color: wheat;
+                        background-color: slategray;
                     }
                     .imageBox {
                         overflow: hidden;
                         box-sizing: border-box;
-                        border: 5px solid;
+                        border: 5px solid  rgb(15, 85, 85);;
                         padding:0;
+                        border-radius: 30px;
+                        margin:1px;
+                        width:380px;
+                        margin-left: 10px;
                     }
                     .imageBox h3 {
                         cursor: pointer;
-                        font-weight:bolder;
+                        font-weight:1000;
                         font-size:25px;
                         font-style: italic;
                         position:absolute;
@@ -26,9 +30,13 @@
                         width:100%;
                         transition:.5s;
                         text-align: center;
+                        
                     }
                     .imageBox:hover h3 {
-                        top: 50%;
+                        top: 30%;
+                    }
+                    #display {
+                        margin-top:50px;
                     }
                 </style>
             </head>
@@ -36,14 +44,13 @@
             <body>
             <section style="margin-top:-20px;">
                     <div class="container-fluid">
-                        <div class="container">
-                        <div class="row">
+                        <div class="row" id="display">
                             {% for one_image in images %}
                             <div class="col-md-4 imageBox" style="margin-top:20px;">
                                 <h3>
-                                    <a data-toggle="modal" data-target="#{{one_image.id}}" style="color:midnightblue; text-align:center;">{{one_image.name}}</a>
+                                    <a data-toggle="modal" data-target="#{{one_image.id}}" style="color:black;text-transform: capitalize; text-align:center; text-decoration: underline">{{one_image.name}}</a>
                                 </h3>
-                                <img src="{{one_image.image.url}}" alt="{{one_image.name}}" style="height:400px; width:500px;" class="img-responsive">
+                                <img src="{{one_image.image.url}}" alt="{{one_image.name}}" style="height:400px; width:400px;" class="img-responsive">
                             </div>
                             {% empty %}
                             <div class="container">
@@ -56,14 +63,15 @@
                             {% endfor %}
                             
                         </div>
-                        </div>
                     </div>
             </section>
 
             {% for one_image in images %}
-                <div class="modal fade bd-example-modal-lg" id="{{one_image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal" id="{{one_image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
                         <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal">&times;</button>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-12 modal-image">
@@ -84,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </body>
 
