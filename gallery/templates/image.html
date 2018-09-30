@@ -4,14 +4,14 @@
 {{block.super}}
             <head>
                 <style>
-                    body {
-                        background-image:url('static/images/rain.jpg');
+                    #homepage {
+                        background-image: url('static/images/raindrops.jpg');
                         background-size: cover;
                     }
                     .imageBox {
                         overflow: hidden;
                         box-sizing: border-box;
-                        border: 5px solid lightslategray;
+                        border: 5px solid  rgb(15, 85, 85);
                         padding:0;
                         border-radius: 30px;
                         margin:1px;
@@ -37,28 +37,48 @@
                         top: 30%;
                     }
                     #display {
-                        margin-top:50px;
+                        margin-top:140px;
+                    }
+                    #topic {
+                        font-size:100px;
+                        margin-top:-120px;
+                        font-family:'Lucida Sans Unicode';
+                        color: rgb(62, 235, 235);
+                    }
+                    #categories {
+                        font-size: 35px;
+                        font-family:'Lucida Sans Unicode';
+                        color: rgb(62, 235, 235);
+                    }
+                    span {
+                        margin-left: 5px;
                     }
                 </style>
             </head>
 
-            <body>
+            <body id="homepage">
             <section style="margin-top:-20px;">
                     <div class="container-fluid">
                         <div class="row" id="display">
+                            <h2 class="text-center" id="topic">PEEP MY IMAGES</h2>
+                            <h3 class="text-center" id="categories">CATEGORIES:
+                                <span>Food |</span>
+                                <span>House |</span>
+                                <span>Hair </span>
+                            </h3>
                             {% for one_image in images %}
                             <div class="col-md-4 imageBox" style="margin-top:20px;">
                                 <h3>
-                                    <a data-toggle="modal" data-target="#{{one_image.id}}" style="color:black;text-transform: capitalize; text-align:center; text-decoration: underline">{{one_image.name}}</a>
+                                    <a data-toggle="modal" data-target="#{{one_image.id}}" style="font-size:40px; color: rgb(62, 235, 235);;text-transform: capitalize; text-align:center; text-decoration: underline; font-family:'Segoe UI';">{{one_image.name}}</a>
                                 </h3>
                                 <img src="{{one_image.image.url}}" alt="{{one_image.name}}" style="height:400px; width:400px;" class="img-responsive">
                             </div>
                             {% empty %}
                             <div class="container">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <p>Images are coming up soon</p>
-                                    </div>
+                                        <div class="row">
+                                                <div class="col-md-12">
+                                                    <h3 style="color: rgb(62, 235, 235);font-size: 80px; font-family:'Lucida Sans Unicode';">No Images available for this category!!!!!</h3>
+                                                </div>
                                 </div>
                             </div>
                             {% endfor %}
@@ -70,10 +90,10 @@
             {% for one_image in images %}
                 <div class="modal" id="{{one_image.id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content" style="padding:0; background-color:rgb(15, 85, 85);">
                             <div class="modal-header">
                                 <button class="close" data-dismiss="modal">&times;</button>
-                            <div class="modal-body">
+                            <div class="modal-body" style="box-sizing:border-box; border:5px solid rgb(18, 37, 33); background-color: rgb(151, 190, 190);">
                                 <div class="row">
                                     <div class="col-md-12 modal-image">
                                         <a href="/image/{{one_image.category.category}}/{{one_image.id}}">
@@ -81,13 +101,18 @@
                                         </a>
                                     </div>
                                     <div class="col-md-12 modal-text">
-                                        <h5 class="modal-title" id="modal-title"> {{one_image.name}} </h5>
+                                        <h2 class="modal-title" id="modal-title"><span style="font-weight:bolder;"> TITLE:{{one_image.name}}</span> </h2>
+                                        <p><span style="font-weight:bolder;">DESCRIPTION: {{one_image.description}}</span></p>
                                         <hr>
-                                        <p>{{one_image.description}}</p>
-                                        <p style="font-weight:bolder">Category: <span class="font-weight-bold">{{one_image.category}}</span></p>
-                                        <p>Location: {{one_image.location}}</p>
-                                        <button type="button" class="btn btn-primary" value="{{one_image.image.url}}" onclick="imagelink(this.value)">Copy Image Link</button>
-                                        
+                                        <div class="row" style="margin-bottom: 2px;">
+                                            <div class="col-md-6">
+                                                    <p style="font-weight:bolder">Category: <span class="font-weight-bolder">{{one_image.category}}</span></p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                    <p style="font-weight:bolder">Location:  <span class="font-weight-bolder">{{one_image.location}}</span></p>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-info" value="{{one_image.image.url}}" onclick="imagelink(this.value)">Copy Image Link</button>
                                     </div>
                                 </div>
                             </div>
