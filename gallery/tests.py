@@ -48,7 +48,7 @@ class ImageTestCase(TestCase):
         self.nairobi.save_location()
 
         self.image = Image(name='Delicious', description='Best Meals in town', location=self.nairobi, category=self.Food)
-        self.image.save_image()
+        self.image.save()
     
     def tearDown(self):
         self.image.delete_image()
@@ -60,13 +60,13 @@ class ImageTestCase(TestCase):
         self.assertTrue(len(images)>0)
     
     def test_get_image(self):
-        images = Image.get_image(self.image.id)
-        self.assertTrue(images == self.image)
+        image = Image.get_image(self.image.id)
+        self.assertTrue(image == self.image)
 
     def test_search_image(self):
         images = Image.search_image('Food')
         self.assertTrue(len(images)>0)
     
     def test_filter_by_location(self):
-        images = Image.filter_by_location('Nairobi')
+        images = Image.filter_by_location('1')
         self.assertTrue(len(images)>0)
