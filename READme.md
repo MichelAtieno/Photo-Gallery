@@ -1,4 +1,4 @@
-# Project Personal Blog
+# Project Photo Gallery
 # By Michel Atieno, created on 29th September 2018.
 
 ### Description
